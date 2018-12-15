@@ -1,0 +1,7 @@
+include common
+
+root = ${HOME_DIR}
+root = ssh://${SSH_SERVER}:${SSH_PORT}/${SSH_SERVER_USER_HOME_DIR}
+logfile = ${UNISON_DIR}/unison-sync.log
+
+include home-dir

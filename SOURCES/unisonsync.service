@@ -1,0 +1,7 @@
+[Unit]
+Description=Sync user's home with unison
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/sh /usr/lib/roaming-profiles/unisonsync.sh
+

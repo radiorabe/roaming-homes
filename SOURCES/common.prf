@@ -1,0 +1,9 @@
+group = true
+maxbackups = 0
+owner = false
+prefer = newer
+perms = -1
+sortbysize = true
+times = true
+confirmbigdel = false
+sshargs = -C

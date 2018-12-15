@@ -1,0 +1,11 @@
+[Unit]
+Description=Timer to sync user's home every minute
+
+[Timer]
+AccuracySec=1
+OnStartupSec=1
+OnUnitInactiveSec=60
+
+[Install]
+WantedBy=timers.target
+
