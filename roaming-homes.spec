@@ -25,6 +25,9 @@
 # Please submit enhancements, bugfixes or comments via GitHub:
 # https://github.com/radiorabe/roaming-homes
 #
+
+%undefine _disable_source_fetch
+
 Name:           roaming-homes
 Version:        master 
 Release:        0%{?dist}
@@ -34,6 +37,7 @@ License:        GPLv3+
 URL:            https://github.com/radiorabe/roaming-homes
 Source0:        https://github.com/radiorabe/roaming-homes/archive/%{version}/%{name}-%{version}.tar.gz
 
+BuildArch:      noarch
 Requires:       python
 Requires:       unison
 
@@ -42,6 +46,7 @@ Roaming homes/profiles using unison and user systemd.
 
 %prep
 %autosetup -n %{name}-%{version}
+
 
 %build
 
@@ -55,21 +60,21 @@ install -m 0755 -d %{buildroot}/usr/share/%{name}
 install -m 0755 -d %{buildroot}/usr/share/%{name}/unison
 install -m 0755 -d %{buildroot}/usr/share/doc/%{name}
 
-install -m 0644 %{name}.conf %{buildroot}/etc/%{name}/%{name}.conf
-install -m 0644 defaults.conf %{buildroot}/etc/%{name}/defaults.conf
-install -m 0644 messages %{buildroot}/etc/%{name}/messages
+install -m 0644 src/%{name}.conf %{buildroot}/etc/%{name}/%{name}.conf
+install -m 0644 src/defaults.conf %{buildroot}/etc/%{name}/defaults.conf
+install -m 0644 src/messages %{buildroot}/etc/%{name}/messages
 
-install -m 0644 unisonsetup.sh %{buildroot}/etc/profile.d/unisonsetup.sh
+install -m 0644 src/unisonsetup.sh %{buildroot}/etc/profile.d/unisonsetup.sh
 
-install -m 0644 unisonsync.sh %{buildroot}/usr/lib/%{name}/unisonsync.sh
-install -m 0644 unisonsync.py %{buildroot}/usr/lib/%{name}/unisonsync.py
+install -m 0644 src/unisonsync.sh %{buildroot}/usr/lib/%{name}/unisonsync.sh
+install -m 0644 src/unisonsync.py %{buildroot}/usr/lib/%{name}/unisonsync.py
 
-install -m 0644 common.prf %{buildroot}/usr/share/%{name}/unison/common.prf 
-install -m 0644 home-dir.prf %{buildroot}/usr/share/%{name}/unison/home-dir.prf
-install -m 0644 HOSTNAME-sync.prf %{buildroot}/usr/share/%{name}/unison/HOSTNAME-sync.prf
+install -m 0644 src/common.prf %{buildroot}/usr/share/%{name}/unison/common.prf 
+install -m 0644 src/home-dir.prf %{buildroot}/usr/share/%{name}/unison/home-dir.prf
+install -m 0644 src/HOSTNAME-sync.prf %{buildroot}/usr/share/%{name}/unison/HOSTNAME-sync.prf
 
-install -m 0644 unisonsync.timer %{buildroot}/%{_userunitdir}/unisonsync.timer
-install -m 0644 unisonsync.service %{buildroot}/%{_userunitdir}/unisonsync.service
+install -m 0644 src/unisonsync.timer %{buildroot}/%{_userunitdir}/unisonsync.timer
+install -m 0644 src/unisonsync.service %{buildroot}/%{_userunitdir}/unisonsync.service
 
 install -m 0644 README.md %{buildroot}/usr/share/doc/%{name}/README.md
 install -m 0644 LICENSE %{buildroot}/usr/share/doc/%{name}/LICENSE
