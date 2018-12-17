@@ -22,7 +22,7 @@
 # If not, see <http://www.gnu.org/licenses/>.
 #
 # Please submit enhancements, bugfixes or comments via:
-# https://github.com/radiorabe/roaming-profiles
+# https://github.com/radiorabe/roaming-homes
 #
 # Authors:
 #  Simon Nussbaum <smirta@gmx.net>
@@ -31,8 +31,8 @@
 # <LONGER-DESCRIPTION>
 #
 
-RP_CONF_DIR="/etc/roaming-profiles"
-source "${RP_CONF_DIR%/}/roaming-profiles.conf"
+RP_CONF_DIR="/etc/roaming-homes"
+source "${RP_CONF_DIR%/}/roaming-homes.conf"
 source "${RP_CONF_DIR%/}/defaults.conf"
 
 userExclusionList=${USER_EXC_LIST}

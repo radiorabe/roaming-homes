@@ -1,6 +1,6 @@
 #!/bin/sh
 ################################################################################
-# unisonsetup.sh - Setup of unison to provide roaming profiles
+# unisonsetup.sh - Setup of unison to provide roaming homes/profiles
 ################################################################################
 #
 # Copyright (C) $( 2018 ) Radio Bern RaBe
@@ -22,7 +22,7 @@
 # If not, see <http://www.gnu.org/licenses/>.
 #
 # Please submit enhancements, bugfixes or comments via:
-# https://github.com/radiorabe/roaming-profiles
+# https://github.com/radiorabe/roaming-homes
 #
 # Authors:
 #  Simon Nussbaum <smirta@gmx.net>
@@ -35,8 +35,8 @@
 #
 
 # load variables from config file
-RP_CONF_DIR="/etc/roaming-profiles"
-source "${RP_CONF_DIR%/}/roaming-profiles.conf"
+RP_CONF_DIR="/etc/roaming-homes"
+source "${RP_CONF_DIR%/}/roaming-homes.conf"
 source "${RP_CONF_DIR%/}/defaults.conf"
 
 # if user is in the exclusion list, skip
@@ -50,7 +50,7 @@ then
 
 # if the configuration file is newer than unison user settings or some preference files are missing
 # (re-)create the files
-if [ "${RP_CONF_DIR%/}/roaming-profiles.conf" -nt "${UNISON_DIR%/}/${HOSTNAME}-sync.prf" ] \
+if [ "${RP_CONF_DIR%/}/roaming-homes.conf" -nt "${UNISON_DIR%/}/${HOSTNAME}-sync.prf" ] \
    || [ ! -e "${UNISON_DIR%/}/common.prf" ] \
    || [ ! -e "${UNISON_DIR%/}/home-dir.prf" ] \
    || [ ! -e "${UNISON_DIR%/}/${HOSTNAME}-sync.prf" ]

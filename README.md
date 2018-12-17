@@ -1,3 +1,3 @@
-# fedora-rpm-roaming-profiles
-Roaming profiles for linux with unison
+# roaming-homes
+Roaming homes/profiles for linux with unison
 ''' UNTESTED '''

@@ -22,7 +22,7 @@
 # If not, see <http://www.gnu.org/licenses/>.
 #
 # Please submit enhancements, bugfixes or comments via:
-# https://github.com/radiorabe/roaming-profiles
+# https://github.com/radiorabe/roaming-homes
 #
 # Authors:
 #  Simon Nussbaum <smirta@gmx.net>
@@ -56,7 +56,7 @@ serverport = '22'
 unison_exec = '/usr/bin/unison'
 xdgemail_exec = '/usr/bin/xdg-email'
 ssh_exec = '/usr/bin/ssh'
-messages_path = '/etc/roaming-profiles/messages'
+messages_path = '/etc/roaming-homes/messages'
 
 unison_cmd = [
             unison_exec, hostname+'-sync',
@@ -64,7 +64,7 @@ unison_cmd = [
             '-auto', '-batch'
 ]
 
-# function to read predefined text from /etc/roaming-profiles/messages
+# function to read predefined text from /etc/roaming-homes/messages
 def getVarFromFile(filename):
     import imp
     f = open(filename)
@@ -102,7 +102,7 @@ def main ():
     parser.add_option("-e", "--email-path", dest="email_path", default="/usr/bin/xdg-email", help="Path to mail program binary [default: %default]")
     parser.add_option("-m", "--messages-path", 
                       dest="messages_path", 
-                      default="/etc/roaming-profiles/messages", 
+                      default="/etc/roaming-homes/messages", 
                       help="Path to file containing predefined text " 
                            "\n\n[default: %default]")
 
