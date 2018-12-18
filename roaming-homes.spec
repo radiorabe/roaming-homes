@@ -55,7 +55,7 @@ rm -rf %{buildroot}
 install -m 0755 -d %{buildroot}/etc/%{name}
 install -m 0755 -d %{buildroot}/etc/profile.d
 install -m 0755 -d %{buildroot}/usr/lib/%{name}
-install -m 0755 -d %{buildroot}/usr/lib/systemd/user
+install -m 0755 -d %{buildroot}/%{_userunitdir}
 install -m 0755 -d %{buildroot}/usr/share/%{name}
 install -m 0755 -d %{buildroot}/usr/share/%{name}/unison
 install -m 0755 -d %{buildroot}/usr/share/doc/%{name}
