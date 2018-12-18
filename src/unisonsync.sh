@@ -35,9 +35,8 @@ RP_CONF_DIR="/etc/roaming-homes"
 source "${RP_CONF_DIR%/}/roaming-homes.conf"
 source "${RP_CONF_DIR%/}/defaults.conf"
 
-userExclusionList=${USER_EXC_LIST}
-
-if [[ ! ${userExclusionList[*]} =~ ${USER} ]]
+# if user is in the exclusion list, skip
+if [[ ! ${USER_EXC_LIST[*]} =~ ${USER} ]]
 then
   python "${RP_LIB_DIR%/}/unisonsync.py" --port="${SSH_PORT}" \
                                          --ssh-path="${SSH_EXEC}" \

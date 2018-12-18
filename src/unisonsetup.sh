@@ -40,9 +40,7 @@ source "${RP_CONF_DIR%/}/roaming-homes.conf"
 source "${RP_CONF_DIR%/}/defaults.conf"
 
 # if user is in the exclusion list, skip
-userExclusionList=${USER_EXC_LIST}
-
-if [[ ! ${userExclusionList[*]} =~ ${USER} ]]
+if [[ ! ${USER_EXC_LIST[*]} =~ ${USER} ]]
 then
 
 # if unison user settings directory doesn't exist, create it
