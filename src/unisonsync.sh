@@ -35,8 +35,8 @@ RP_CONF_DIR="/etc/roaming-homes"
 source "${RP_CONF_DIR%/}/roaming-homes.conf"
 source "${RP_CONF_DIR%/}/defaults.conf"
 
-# if user is in the exclusion list, skip
-if [[ ! ${USER_EXC_LIST[*]} =~ ${USER} ]]
+# skip if user is in the exclusion list or unison is running
+if [[ ! ${USER_EXC_LIST[*]} =~ ${USER} ]] && [[ ! $(pgrep unison) ]]
 then
   python "${RP_LIB_DIR%/}/unisonsync.py" --port="${SSH_PORT}" \
                                          --ssh-path="${SSH_EXEC}" \
