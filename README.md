@@ -1,7 +1,11 @@
 # roaming-homes
 
 ## Description
-Roaming homes/profiles for linux with unison. On user login and after this every 60 seconds using a user space systemd.timer the user home get's synchronized with the server. It does not synchronize if the server is unavailable or another instance of unison is running. 
+Roaming homes/profiles for linux with unison. On user login and after this every 60 seconds the user home get's synchronized with the server by user space systemd. It does not synchronize if the server is unavailable or another instance of unison is running. 
+
+
+**Please share your thoughts**
+
 
 ![Overview](img/roaming-homes.png)
 
@@ -39,8 +43,8 @@ Almost all configuration can be done in [/etc/roaming-homes/roaming-homes.conf](
 ## Links
 * https://www.cis.upenn.edu/~bcpierce/unison/
 * https://www.freedesktop.org/software/systemd/man
-** https://www.freedesktop.org/software/systemd/man/systemd.unit.html
-** https://www.freedesktop.org/software/systemd/man/systemd.timer.html
-** https://www.freedesktop.org/software/systemd/man/systemd.service.html
+  * https://www.freedesktop.org/software/systemd/man/systemd.unit.html
+  * https://www.freedesktop.org/software/systemd/man/systemd.timer.html
+  * https://www.freedesktop.org/software/systemd/man/systemd.service.html
 * https://docs.python.org/2/library/optparse.html 
 * https://www.devdungeon.com/content/desktop-notifications-linux-python 
