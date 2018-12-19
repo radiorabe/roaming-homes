@@ -70,10 +70,10 @@ echo "de_CH" > ${HOME_DIR%/}/.config/user-dirs.locale
 # ignore archives that might exist on the server when logging in the first time on this host
 if [ ! -e "${UNISON_DIR%/}/firstrun" ]
 then
-  ${UNISON_EXEC} "${HOSTNAME}-sync" -ui text -batch -auto -silent -terse -ignorearchives > /dev/null 2>&1
+  ${UNISON_EXEC} "${HOSTNAME}-sync" -ui text -batch -auto -silent -terse -ignorearchives 
   touch "${UNISON_DIR%/}/firstrun"
 else
-  ${UNISON_EXEC} "${HOSTNAME}-sync" -ui text -batch -auto -silent -terse > /dev/null 2>&1
+  ${UNISON_EXEC} "${HOSTNAME}-sync" -ui text -batch -auto -silent -terse
 fi
 
 fi
