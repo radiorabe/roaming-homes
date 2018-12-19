@@ -22,6 +22,7 @@ At the moment the rpm has to be built first. You can then copy and paste it to o
 1. `cd roaming-homes`
 1. `rpmbuild -bb roaming-homes.spec`
 1. `rpm -i ~/rpmbuild/RPMS/noarch/roaming-homes*.rpm`
+1. In /etc/roaming-homes/roaming-homes.conf add at least the fqdn or ip of the server to the variable SSH_SERVER
 
 ## Configuration
 Almost all configuration can be done in [/etc/roaming-homes/roaming-homes.conf](src/roaming-homes.conf). Unfortunately the synchronization frequency has to be set in seconds in [/usr/lib/systemd/user/unisonsync.timer](src/unisonsync.timer). After this you'll have to reload the systemd-daemon `systemd --user --global daemon-reload`.
