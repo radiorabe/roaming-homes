@@ -79,8 +79,7 @@ def resolv_func(notification = None, action = None, user_data = None):
     close_func()
 
 # open mail program with predefined text if "mailto" in the notification was clicked
-def mailto_func(notification = None, action = None, user_data = None):
-    mail_subject, mail_body, mail_receiver, cmd_output = user_data
+def mailto_func(notification, action, mail_subject, mail_body, mail_receiver, cmd_output):
     os.spawnlp(os.P_NOWAIT, xdgemail_exec, xdgemail_exec,
                '--subject', str(mail_subject),
                '--body', str(mail_body)+str(cmd_output),
