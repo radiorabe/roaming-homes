@@ -1,8 +1,8 @@
 mail_subject = 'Unison Sync Error' # Subject for mail to support if sync fails
 mail_body = '\n\n\nError:\n------\n' # Text before error output
-mail_receiver = 'IT-Reaktion <it@rabe.ch>' # receiver of support mail
+mail_receiver = 'IT-Support <support@helpme>' # receiver of support mail
 notify_title = 'User Home Synchronization failed'
 notify_message = 'Failed to synchronize user home with server. If this issue persists, please send an email to it@rabe.ch by pressing the button below.'
 notify_resolv = 'Resolve manually'
-notify_mail = 'Send mail to it@rabe.ch'
+notify_mail = 'Send mail to support@helpme'
 notify_ignore = 'Ignore'
