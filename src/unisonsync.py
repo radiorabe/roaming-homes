@@ -49,21 +49,6 @@ if havedisplay:
     from gi.repository import GLib
     main_loop = GLib.MainLoop()
 
-# set default values
-hostname = os.uname()[1]
-servername = ''
-serverport = '22'
-unison_exec = '/usr/bin/unison'
-xdgemail_exec = '/usr/bin/xdg-email'
-ssh_exec = '/usr/bin/ssh'
-messages_path = '/etc/roaming-homes/messages'
-
-unison_cmd = [
-            unison_exec, hostname+'-sync',
-            '-ui', 'text',
-            '-auto', '-batch'
-]
-
 # function to read predefined text from /etc/roaming-homes/messages
 def getVarFromFile(filename):
     import imp
@@ -92,33 +77,63 @@ def close_func(notification = None, action = None, user_data = None):
     quit()
 
 def main ():
+    # set default values
+    hostname = os.uname()[1]
+    servername = ''
+    serverport = '22'
+    unison_exec = '/usr/bin/unison'
+    xdgemail_exec = '/usr/bin/xdg-email'
+    ssh_exec = '/usr/bin/ssh'
+    messages_path = '/etc/roaming-homes/messages'
+    
+    unison_cmd = [
+                  unison_exec, hostname+'-sync',
+                  '-ui', 'text',
+                  '-auto', '-batch'
+    ]
+    
+    
     # Initialize help menu
     usage = "usage: %prog [options] hostname"
     parser = OptionParser(usage)
-    parser.add_option("-p", "--port", dest="port", default="22", help="SSH Port [default: %default]")
-    parser.add_option("-s", "--ssh-path", dest="ssh_path", default="/usr/bin/ssh", help="Path to ssh binary [default: %default]")
-    parser.add_option("-u", "--unison-path", dest="unison_path", default="/usr/bin/unison", help="Path to unison binary [default: %default]")
-    parser.add_option("-e", "--email-path", dest="email_path", default="/usr/bin/xdg-email", help="Path to mail program binary [default: %default]")
+    parser.add_option("-p", "--port", 
+                      dest="port", 
+                      default=serverport, 
+                      help="SSH Port                                      "
+                      "[default: %default]")
+    parser.add_option("-s", "--ssh-path", 
+                      dest="ssh_path", 
+                      default=ssh_exec, 
+                      help="Path to ssh binary                            "
+                      "[default: %default]")
+    parser.add_option("-u", "--unison-path", 
+                      dest="unison_path", 
+                      default=unison_exec, 
+                      help="Path to unison binary                         "
+                      "[default: %default]")
+    parser.add_option("-e", "--email-path", 
+                      dest="email_path", 
+                      default=xdgemail_exec, 
+                      help="Path to mail program binary                   "
+                      "[default: %default]")
     parser.add_option("-m", "--messages-path", 
                       dest="messages_path", 
-                      default="/etc/roaming-homes/messages", 
-                      help="Path to file containing predefined text " 
-                           "\n\n[default: %default]")
+                      default=messages_path, 
+                      help="Path to file containing predefined text       "
+                      "[default: %default]")
 
     # get options and arguments passed
     (options, args) = parser.parse_args()
+
+    # exit if hostname of server's not passed as an argument
     if len(args) != 1:
         parser.error("incorrect number of arguments")
-    if options.port:
-        serverport = options.port
-    if options.ssh_path:
-        ssh_exec = options.ssh_path
-    if options.unison_path:
-        unison_exec = options.unison_path
-    if options.email_path:
-        email_exec = options.email_path
-    if options.messages_path:
-        messages_path = options.messages_path
+
+    serverport = options.port
+    ssh_exec = options.ssh_path
+    unison_exec = options.unison_path
+    email_exec = options.email_path
+    messages_path = options.messages_path
 
     servername = args[0]
 
