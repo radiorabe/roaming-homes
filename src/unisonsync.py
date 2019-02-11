@@ -138,7 +138,7 @@ def main ():
     servername = args[0]
 
     # check if ssh server is reachable
-    p = subprocess.Popen([ssh_exec, '-p', serverport, '-q', servername, 'exit'])
+    p = subprocess.Popen([ssh_exec, '-p', serverport, '-q', '-o', 'ConnectTimeout=1', servername, 'exit'])
     p.wait()
 
     # if connection attempt to ssh server was successful, try to sync
