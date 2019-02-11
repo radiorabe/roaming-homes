@@ -67,13 +67,19 @@ fi
 LC_ALL=C xdg-user-dirs-update
 echo "de_CH" > ${HOME_DIR%/}/.config/user-dirs.locale
 
-# ignore archives that might exist on the server when logging in the first time on this host
-if [ ! -e "${UNISON_DIR%/}/firstrun" ]
+# to be replaced with systemctl start unisonsync.service from this point
+# check ssh connection
+ssh -p ${SSH_PORT} -q -o ConnectTimeout=1 ${SSH_SERVER} exit
+if [ ! $? ]
 then
-  ${UNISON_EXEC} "${HOSTNAME}-sync" -ui text -batch -auto -silent -terse -ignorearchives 
-  touch "${UNISON_DIR%/}/firstrun"
-else
-  ${UNISON_EXEC} "${HOSTNAME}-sync" -ui text -batch -auto -silent -terse
+ 
+  # ignore archives that might exist on the server when logging in the first time on this host
+  if [ ! -e "${UNISON_DIR%/}/firstrun" ]
+  then
+    ${UNISON_EXEC} "${HOSTNAME}-sync" -ui text -batch -auto -silent -terse -ignorearchives 
+    touch "${UNISON_DIR%/}/firstrun"
+  else
+    ${UNISON_EXEC} "${HOSTNAME}-sync" -ui text -batch -auto -silent -terse
+  fi
 fi
-
 fi
