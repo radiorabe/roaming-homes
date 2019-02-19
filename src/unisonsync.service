@@ -3,5 +3,5 @@ Description=Sync user's home with unison
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/sh /usr/lib/roaming-homes/unisonsync.sh
+ExecStart=/usr/bin/sh /usr/lib64/roaming-homes/unisonsync.sh
 
